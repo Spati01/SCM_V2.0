@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+
 import com.scm.Services.Impl.SecurityCustomUserDetailsService;
 
 
@@ -98,6 +99,19 @@ formLogin.successHandler(new AuthenticationSuccessHandler() {
   logoutForm.logoutSuccessUrl("/login?logout=true");
 
   });
+
+
+  //Oauth2 Configuration google and github
+  httpSecurity.oauth2Login(oauth2->{
+    oauth2.loginPage("/login");
+    oauth2.defaultSuccessUrl("/user/dashboard");
+    // oauth2.failureUrl("/login?error=true");
+    // oauth2.userInfoEndpoint(userInfo->{
+    //   userInfo.userService(userDetailsService);
+    //   });
+  });
+
+  
 
   return httpSecurity.build();
 
