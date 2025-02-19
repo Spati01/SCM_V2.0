@@ -49,7 +49,8 @@
         #f59e0b,
         #4f46e5
     );
-    background-size: 300% 300%;
+   background-size: 300% 300%;
+     
     animation: border-light 4s linear infinite;
     position: relative;
     padding: 2px; /* Thin border */
@@ -67,7 +68,7 @@
     color: white;
     font-weight: 500;
     transition: all 0.3s ease;
-    display: block;
+ //   display: block;
     text-align: center;
     font-size: 0.875rem; /* Smaller font size */
     width: 100%; /* Full width of parent */
@@ -83,3 +84,99 @@
     gap: 1rem; /* Space between buttons */
     margin-top: 1rem; /* Margin from the form */
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Text SCM styles
+
+
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+
+
+.content {
+    position: relative;
+  }
+
+.content span {
+  color: #fff;
+  position: absolute;
+  font-size: 2em;
+  transform: translate(-50%, -50%);
+  margin-left: 20px;
+}
+
+.content span:nth-child(1) {
+  color: transparent;
+  -webkit-text-stroke: 2px #03a9f4;
+  margin-left: 20px;
+}
+
+.content span:nth-child(2) {
+  color: #2c034a;
+  animation: animate 4s ease-in-out infinite;
+}
+
+@keyframes animate {
+  0%,
+  100% {
+    clip-path: polygon(
+      0% 45%,
+      16% 44%,
+      33% 50%,
+      54% 60%,
+      70% 61%,
+      84% 59%,
+      100% 52%,
+      100% 100%,
+      0% 100%
+    );
+  }
+
+  50% {
+    clip-path: polygon(
+      0% 60%,
+      15% 65%,
+      34% 66%,
+      51% 62%,
+      67% 50%,
+      84% 45%,
+      100% 46%,
+      100% 100%,
+      0% 100%
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+

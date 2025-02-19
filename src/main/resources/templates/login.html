@@ -21,8 +21,17 @@
     
     <!--<div data-th-replace="message::messagebox"></div> -->
     
-    
-    
+    <div class="flex justify-center items-center">
+            <animated-icons
+  src="https://animatedicons.co/get-icon?name=Individual&style=minimalistic&token=ae97ee7c-56cc-4490-90bd-ecd3fc81466e"
+  trigger="loop"
+  attributes='{"variationThumbColour":"#A4A7A9","variationName":"Gray Tone","variationNumber":3,"numberOfGroups":1,"strokeWidth":1.5,"backgroundIsGroup":true,"defaultColours":{"group-1":"#000000","background":"#4A71B2FF"}}'
+  height="100"
+  width="100"
+></animated-icons>
+           </div>
+
+           
             <h3 class="mb-2 text-2xl text-center font-bold tracking-tight text-gray-900 dark:text-white">Login</h3>
 
             <div class="text-red-600 text-center"  th:if="${param.error}">Invalid username and password.</div>
@@ -83,20 +92,45 @@
     
     </form>
       
+    
+   
+   
+
     <div class="social-buttons-container">
         <div class="animated-border">
-            <a data-th-href="@{'/oauth2/authorization/google'}" class="social-button">
+            <a data-th-href="@{'/oauth2/authorization/google'}" 
+               class="social-button relative inline-flex items-center justify-center overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-200 to-blue-100 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+              
+<dotlottie-player
+src="https://lottie.host/49763d7f-68ff-4908-9bfc-527e676c1d63/OaZNhdrj4i.lottie"
+background="transparent"
+speed="1"
+style="width: 25px; height: 25px"
+loop
+autoplay
+></dotlottie-player>
                 Login With Google
             </a>
         </div>
         <div class="animated-border">
-            <a data-th-href="@{'/oauth2/authorization/github'}" class="social-button">
-                Login With GitHub
+            <a data-th-href="@{'/oauth2/authorization/github'}" 
+               class="social-button relative inline-flex items-center justify-center overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-200 to-blue-100 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+                
+               
+               <dotlottie-player
+               src="https://lottie.host/bbc87061-563d-4dba-8c9a-02fda9bde3f9/m3MGsrxUmA.lottie"
+               background="transparent"
+               speed="1"
+               style="width: 25px; height: 25px "
+               loop
+               autoplay
+             ></dotlottie-player>
+               Login With GitHub
             </a>
         </div>
     </div>
-    
-    
+
+   
     
     
           </div>

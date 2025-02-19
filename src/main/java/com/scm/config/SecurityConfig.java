@@ -39,7 +39,9 @@ public class SecurityConfig {
     //    var inMemoryUserDetailsManager =  new InMemoryUserDetailsManager();
     //     return  inMemoryUserDetailsManager;
     // }
-
+     
+    @Autowired
+    private OAuthAuthenicationSuccessHandler handler;
     @Autowired
   private SecurityCustomUserDetailsService userDetailsService;
 
@@ -104,11 +106,8 @@ formLogin.successHandler(new AuthenticationSuccessHandler() {
   //Oauth2 Configuration google and github
   httpSecurity.oauth2Login(oauth2->{
     oauth2.loginPage("/login");
-    oauth2.defaultSuccessUrl("/user/dashboard");
-    // oauth2.failureUrl("/login?error=true");
-    // oauth2.userInfoEndpoint(userInfo->{
-    //   userInfo.userService(userDetailsService);
-    //   });
+    oauth2.successHandler(handler);
+
   });
 
   
