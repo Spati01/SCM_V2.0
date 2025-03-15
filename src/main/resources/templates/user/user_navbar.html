@@ -1,0 +1,90 @@
+<!-- LoggedInUser Navbar -->
+<nav data-th-fragment="user_navbar" class="bg-white border-gray-200 dark:bg-gray-900 shadow-sm sm:pl-64 fixed w-full top-0 left-0 right-0">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2 relative">
+
+    <!-- Sidebar Toggle -->
+    <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" 
+      class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+      <span class="sr-only">Open sidebar</span>
+      <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
+      </svg>
+    </button>
+
+    <!-- Logo & SCM Text -->
+    <a data-th-href="@{/}" class="flex items-center space-x-3 rtl:space-x-reverse ml-2">
+      <animated-icons
+        src="https://animatedicons.co/get-icon?name=Service&style=minimalistic&token=eae508df-c40e-4683-9677-0cbcc6d9a55a"
+        trigger="loop"
+        attributes='{"variationThumbColour":"#000000","variationName":"Dark","variationNumber":4,"numberOfGroups":2,"strokeWidth":1.5,"backgroundIsGroup":true,"defaultColours":{"group-1":"#BACFE3FF","group-2":"#CB2020FF","background":"#805489FF"}}'
+        height="40"
+        width="40"
+        class="logo"
+      ></animated-icons>
+      
+      <div class="content relative">
+        <span class="scm-text">SCM</span>
+        <span class="scm-text overlay absolute left-0 top-0">SCM</span>
+      </div>
+    </a>
+
+    <!-- Right-side Controls -->
+    <div class="flex items-center gap-4 md:order-2">
+      <!-- Theme Toggle -->
+      <button id="theme_change_button" 
+      class="relative flex items-center justify-center w-14 h-14 rounded-full 
+             bg-gray-200 dark:bg-gray-800 transition-all duration-300 shadow-md 
+             border-4 border-transparent animate-border-theme ">
+    
+      <!-- Sun Icon (Visible in light mode) -->
+      <i id="sun-icon" class="fa-solid fa-sun text-yellow-500 text-2xl absolute transition-opacity duration-500 opacity-100 dark:opacity-0"></i>
+  
+      <!-- Moon Icon (Visible in dark mode) -->
+      <i id="moon-icon" class="fa-solid fa-moon text-blue-400 text-2xl absolute transition-opacity duration-500 opacity-0 dark:opacity-100"></i>
+  
+  </button>
+  
+  
+
+      <!-- Desktop User/Logout -->
+      <div class="hidden md:flex gap-2">
+        <a data-th-href="@{/user/profile}"  
+           class="animated-border-button flex items-center justify-center min-w-[100px] px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+           th:classappend="${LoggedInUser} ? 'logged-in-bg' : ''">
+            <span data-th-text="${LoggedInUser.name}"></span> 
+        </a>
+        <a data-th-href="@{/do-logout}"  
+           class="animated-border-button flex items-center justify-center min-w-[100px] px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+           <span>Logout</span> 
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button data-collapse-toggle="navbar-cta" type="button" 
+          class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+          <span class="sr-only">Open main menu</span>
+          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+          </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu (Includes User/Logout) -->
+    <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
+      <ul class="animated-menu flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        <li><a data-th-href="@{'/home'}" class="block py-2 px-3 md:p-0 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 rounded">HOME</a></li>
+        <li><a data-th-href="@{'/about'}" class="block py-2 px-3 md:p-0 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 rounded">ABOUT</a></li>
+        <li><a data-th-href="@{'/services'}" class="block py-2 px-3 md:p-0 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 rounded">SERVICES</a></li>
+        <li><a data-th-href="@{'/contact'}" class="block py-2 px-3 md:p-0 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 rounded">CONTACT</a></li>
+        
+        <!-- Mobile Only User/Logout -->
+        <li class="md:hidden">
+          <a data-th-href="@{/user/profile}" class="block py-2 px-3 md:p-0 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 rounded">PROFILE</a>
+        </li>
+        <li class="md:hidden">
+          <a data-th-href="@{/do-logout}" class="block py-2 px-3 md:p-0 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 rounded">LOGOUT</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

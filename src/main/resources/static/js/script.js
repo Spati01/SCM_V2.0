@@ -1,61 +1,69 @@
 console.log("Script loaded");
 
-// change theme work
+// Get current theme from localStorage or default to light
 let currentTheme = getTheme();
-//initial -->
 
+// Apply theme on page load
 document.addEventListener("DOMContentLoaded", () => {
-  changeTheme();
+  changePageTheme(currentTheme, "");
 });
 
-//TODO:
+// Function to toggle theme on button click
 function changeTheme() {
-  //set to web page
-
-  changePageTheme(currentTheme, "");
-  //set the listener to change theme button
   const changeThemeButton = document.querySelector("#theme_change_button");
 
-  changeThemeButton.addEventListener("click", (event) => {
+  changeThemeButton.addEventListener("click", () => {
     let oldTheme = currentTheme;
-    console.log("change theme button clicked");
-    if (currentTheme === "dark") {
-      //theme ko light
-      currentTheme = "light";
-    } else {
-      //theme ko dark
-      currentTheme = "dark";
-    }
+    console.log("Change theme button clicked");
+
+    // Toggle theme
+    currentTheme = currentTheme === "dark" ? "light" : "dark";
+
     console.log(currentTheme);
     changePageTheme(currentTheme, oldTheme);
   });
 }
 
-//set theme to localstorage
+// Store theme in localStorage
 function setTheme(theme) {
   localStorage.setItem("theme", theme);
 }
 
-//get theme from localstorage
+// Retrieve theme from localStorage
 function getTheme() {
   let theme = localStorage.getItem("theme");
   return theme ? theme : "light";
 }
 
-//change current page theme
+// Apply theme to the page with smooth animation
 function changePageTheme(theme, oldTheme) {
-  //localstorage mein update karenge
-  setTheme(currentTheme);
-  //remove the current theme
+  setTheme(currentTheme); // Update localStorage
 
+  const htmlElement = document.querySelector("html");
+  const sunIcon = document.getElementById("sun-icon");
+  const moonIcon = document.getElementById("moon-icon");
+
+  // Remove the previous theme if exists
   if (oldTheme) {
-    document.querySelector("html").classList.remove(oldTheme);
+    htmlElement.classList.remove(oldTheme);
   }
-  //set the current theme
-  document.querySelector("html").classList.add(theme);
 
-  // change the text of button
-  document
-    .querySelector("#theme_change_button")
-    .querySelector("span").textContent = theme == "light" ? "Light" : "Dark";
+  // Apply the new theme
+  htmlElement.classList.add(theme);
+
+  // **Smooth opacity transition**
+  if (theme === "light") {
+    sunIcon.style.animation = "fadeIn 0.5s forwards";
+    moonIcon.style.animation = "fadeOut 0.5s forwards";
+  } else {
+    sunIcon.style.animation = "fadeOut 0.5s forwards";
+    moonIcon.style.animation = "fadeIn 0.5s forwards";
+  }
 }
+
+// Initialize theme switching
+changeTheme();
+
+
+
+

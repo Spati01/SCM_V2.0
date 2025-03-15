@@ -1,0 +1,41 @@
+@keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .active-item {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%) !important;
+            border-left: 3px solid #6366f1;
+            position: relative;
+        }
+        
+        .active-item:after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: #6366f1;
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(99, 102, 241, 0.4);
+        }
+        
+ 
+     
+
+
+
+
+
+        @media (max-width: 639px) {
+            #sidebar {
+                background-color: rgba(249, 250, 251, 0.98);
+                backdrop-filter: blur(10px);
+            }
+            
+            .dark #sidebar {
+                background-color: rgba(31, 41, 55, 0.98);
+            }
+        }

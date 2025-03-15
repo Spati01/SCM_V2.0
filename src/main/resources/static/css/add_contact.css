@@ -1,0 +1,114 @@
+/* ✅ Glowing Circular Border Effect */  
+@keyframes borderAnimation {  
+  0% { border-color: #ff7e5f; transform: rotate(0deg); }  
+  25% { border-color: #feb47b; transform: rotate(90deg); }  
+  50% { border-color: #4f46e5; transform: rotate(180deg); }  
+  75% { border-color: #ec4899; transform: rotate(270deg); }  
+  100% { border-color: #f59e0b; transform: rotate(360deg); }  
+}  
+
+.animate-border {  
+  border-width: 3px;  
+  border-style: solid;  
+  border-color: transparent;  
+  border-radius: 9999px;  
+  position: absolute;  
+  animation: borderAnimation 1.8s linear infinite;  
+}  
+
+/* ✅ Floating Image Effect */  
+.animate-float {  
+  animation: floatImage 2.5s infinite alternate;  
+}  
+
+@keyframes floatImage {  
+  0% { transform: translateY(0); }  
+  100% { transform: translateY(-5px); }  
+}  
+
+/* ✅ Remove Button Glow Bounce Effect */  
+.animate-bounce-glow {  
+  animation: bounceGlow 2s infinite;  
+}  
+
+@keyframes bounceGlow {  
+  0% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 0, 0, 0.3); }  
+  50% { transform: scale(1.1); box-shadow: 0 0 20px rgba(255, 0, 0, 0.5); }  
+  100% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 0, 0, 0.3); }  
+}  
+
+/* ✅ Text Pulse Effect */  
+.animate-text-pulse {  
+  animation: textPulse 1.5s infinite;  
+}  
+
+@keyframes textPulse {  
+  0% { opacity: 0.6; }  
+  50% { opacity: 1; }  
+  100% { opacity: 0.6; }  
+}  
+
+/* ✅ Dynamic Light/Dark Theme Support */  
+#remove_image_btn {  
+  background-color: #fff;  
+  color: #ff0000;  
+}  
+
+#remove_image_btn:hover {  
+  background-color: #ff0000;  
+  color: #fff;  
+  transform: scale(1.1);  
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);  
+}  
+
+.dark #remove_image_btn {  
+  background-color: #222;  
+  color: #ff4444;  
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);  
+}  
+
+.dark #remove_image_btn:hover {  
+  background-color: #ff4444;  
+  color: #fff;  
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.8);  
+}  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

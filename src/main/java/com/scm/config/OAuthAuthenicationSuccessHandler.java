@@ -38,7 +38,7 @@ public class OAuthAuthenicationSuccessHandler implements AuthenticationSuccessHa
            
            logger.info("Oauth2 Authentication Success");
 
-        var oauth2 = (OAuth2AuthenticationToken)   authentication;
+        var oauth2 = (OAuth2AuthenticationToken) authentication;
 
         String oauthId =  oauth2.getAuthorizedClientRegistrationId();
 

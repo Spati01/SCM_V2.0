@@ -1,0 +1,351 @@
+/* ✅ Enhanced Glowing Border */
+.glow-border {
+    border-radius: 50%;
+    padding: 3px;
+    background: linear-gradient(90deg, #007bff, #c084fc, #00bcd4);
+    background-size: 300% 300%;
+    animation: borderGlow 6s ease-in-out infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.6),
+                0 0 14px rgba(192, 132, 252, 0.6),
+                0 0 20px rgba(0, 188, 212, 0.6);
+    transition: all 0.3s ease-in-out;
+}
+
+/* ✅ Glowing Border Animation */
+@keyframes borderGlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ✅ Profile Image (Reduced Size) */
+.glow-border img {
+    width: 36px; /* Reduced from 45px */
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* ✅ Image Hover Effect */
+.glow-border:hover {
+    box-shadow: 0 0 12px rgba(0, 123, 255, 0.8),
+                0 0 18px rgba(192, 132, 252, 0.8),
+                0 0 25px rgba(0, 188, 212, 0.8);
+}
+
+.glow-border:hover img {
+    transform: scale(1.08);
+}
+
+/* ✅ Profile Container */
+.profile-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 180px;
+}
+
+/* ✅ Name & Email Styling */
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ✅ Light Theme: Improved Visibility */
+.theme-container.light-theme .name-text {
+    font-size: 13px; /* Slightly reduced */
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.theme-container.light-theme .email-text {
+    font-size: 11px;
+    color: #475569;
+}
+
+/* ✅ Dark Theme: Ensuring High Visibility */
+.theme-container.dark-theme .name-text {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.theme-container.dark-theme .email-text {
+    font-size: 11px;
+    color: #e2e8f0;
+}
+
+/* ✅ Email Icon Color for Dark Mode */
+.theme-container.dark-theme .fa-envelope {
+    color: #facc15;
+}
+
+/* ✅ Email Icon Color for Light Mode */
+.theme-container.light-theme .fa-envelope {
+    color: #007bff;
+}
+
+/* ✅ Mobile Optimization */
+@media (max-width: 768px) {
+    .glow-border img {
+        width: 30px; /* Further reduced for mobile */
+        height: 30px;
+    }
+    .profile-container {
+        flex-direction: row;
+        align-items: center;
+    }
+    .name-text {
+        font-size: 11px;
+    }
+    .email-text {
+        font-size: 10px;
+    }
+}
+
+
+
+
+
+
+/* Pagination Conpomentes */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+/* Pagination Container */
+.pagination_container {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+/* Pagination List */
+.pagination {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Page Number Buttons */
+.pagination a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* Compact size */
+    height: 40px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    border: 2px solid transparent;
+}
+
+/* Default Light Theme */
+.pagination a {
+    color: #4F46E5;
+    background: white;
+    border: 2px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Default Dark Theme */
+.dark .pagination a {
+    color: #ddd;
+    background: #222;
+    border: 2px solid #444;
+}
+
+/* Hover Effect */
+.pagination a:hover {
+    background: #4F46E5;
+    color: white;
+}
+
+/* Active Page Styling */
+.pagination .active {
+    background: #4F46E5 !important;  /* Unique Background */
+    color: white !important;
+    border: 2px solid #4F46E5;
+    position: relative;
+}
+
+/* Dark Mode - Active Page */
+.dark .pagination .active {
+    background: #9333EA !important;
+    border-color: #9333EA;
+}
+
+/* Floating Dot for Active Page (Now at the Top Center) */
+.pagination .active::before {
+    content: '';
+    position: absolute;
+    top: -10px; /* Adjusted for perfect top-center alignment */
+    left: 35%;
+    transform: translateX(-50%);
+    width: 8px; /* Slightly increased dot size */
+    height: 8px;
+    background: #4F46E5; /* Matches active button */
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(79, 70, 229, 0.6);
+    animation: float 1.5s infinite ease-in-out;
+}
+
+/* Dark Mode - Floating Dot */
+.dark .pagination .active::before {
+    background: #9333EA;
+    box-shadow: 0 0 8px rgba(147, 51, 234, 0.6);
+}
+
+/* Previous & Next Buttons */
+.pagination .prev-next {
+    width: auto;
+    padding: 0 14px;
+    height: 40px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 20px;
+}
+
+/* Light Theme */
+.pagination .prev-next {
+    background: rgba(79, 70, 229, 0.15);
+    color: #4F46E5;
+}
+
+/* Dark Theme */
+.dark .pagination .prev-next {
+    background: rgba(147, 51, 234, 0.2);
+    color: #ddd;
+}
+
+/* Hover Effect */
+.pagination .prev-next:hover {
+    background: #4F46E5;
+    color: white;
+}
+
+/* Dark Mode - Hover */
+.dark .pagination .prev-next:hover {
+    background: #9333EA;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .pagination {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px;
+    }
+
+    .pagination a {
+        width: 36px;
+        height: 36px;
+        font-size: 13px;
+    }
+
+    .pagination .prev-next {
+        font-size: 12px;
+        padding: 0 10px;
+        height: 36px;
+    }
+
+    .pagination .active::before {
+        top: -8px; /* Adjust for smaller screens */
+        width: 6px;
+        height: 6px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Animated Table Row Border 
+.table-row-animate {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.table-row-animate::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #3b82f6; 
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.table-row-animate:hover::after {
+    width: 100%;
+}
+
+
+.dark .table-row-animate::after {
+    background: #60a5fa; 
+}
+
+.hover-scale {
+    transition: transform 0.2s ease;
+}
+
+.hover-scale:hover {
+    transform: translateY(-2px);
+}
+
+
+*/
+
+
+
+/* Animation  table 
+
+@keyframes growingBorder {
+    0% {
+        box-shadow: 0 0 5px rgba(255, 0, 255, 0.3), inset 0 0 5px rgba(255, 0, 255, 0.3);
+        border-color: rgba(255, 0, 255, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 0, 255, 0.8), inset 0 0 15px rgba(255, 0, 255, 0.5);
+        border-color: rgba(255, 0, 255, 1);
+    }
+    100% {
+        box-shadow: 0 0 5px rgba(255, 0, 255, 0.3), inset 0 0 5px rgba(255, 0, 255, 0.3);
+        border-color: rgba(255, 0, 255, 0.5);
+    }
+}
+
+.glowing-table {
+    border-radius: 10px;
+    border: 3px solid rgba(255, 0, 255, 0.8); 
+    animation: growingBorder 2s infinite alternate ease-in-out;
+}
+*/ 

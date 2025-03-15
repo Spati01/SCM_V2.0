@@ -20,15 +20,6 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 
-
-
-
-
-
-
-
-
-
 @Controller
 public class PageController {
 
@@ -73,21 +64,23 @@ public String service() {
     return "services";
 }
 
+//Contact route
 @GetMapping("/contact")
 public String Contact() {
-    return new String("contact");
+    return "contact";
 }
 
+//Login page
 @GetMapping("/login")
 public String Login() {
-    return new String("login");
+    return "login";
 }
 
 
 
 
 
-
+// Registration page 
 
 @GetMapping("/register")
 public String register(Model model) {
@@ -100,7 +93,7 @@ public String register(Model model) {
 }
 
 
- 
+// Registration page 
 @PostMapping("/do-register")
 public String Register(@Valid  @ModelAttribute UserForm userForm,BindingResult result, HttpSession session) {
  //fatch data

@@ -103,9 +103,10 @@
 
 
 
-// Text SCM styles
 
 
+
+/* Responsive Navbar - Default styles */
 @import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
 
 * {
@@ -115,59 +116,537 @@
   font-family: "Poppins", sans-serif;
 }
 
+/* 🔹 Navbar Styling (Glassy Transparent with Smooth Blur) */
+nav {
+  padding: 3px 0; /* Reduced navbar height */
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+  backdrop-filter: blur(10px);          /* Smooth blur effect */
+  -webkit-backdrop-filter: blur(10px);  /* Safari support */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  animation: fadeInNavbar 1.2s ease-in-out;
+}
 
+/* 🔹 Container Adjustments */
+.max-w-screen-xl {
+  padding: 0.4rem;
+}
 
+/* 🔹 Logo & SCM Text Container */
+a {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  perspective: 1200px;
+}
+
+/* 🔹 Logo Styling */
+.logo {
+  height: 35px; /* Reduced size */
+  width: 35px;
+  transition: transform 0.4s ease-in-out;
+  transform-style: preserve-3d;
+}
+
+.logo:hover {
+  transform: rotateY(20deg) rotateX(10deg) scale(1.1);
+}
+
+/* 🔹 SCM Text Container */
 .content {
-    position: relative;
-  }
-
-.content span {
-  color: #fff;
-  position: absolute;
-  font-size: 2em;
-  transform: translate(-50%, -50%);
-  margin-left: 20px;
+  position: relative;
+  display: inline-block;
+  animation: slideIn 1s ease-in-out forwards;
 }
 
-.content span:nth-child(1) {
+/* 🔹 SCM Text (Main Text with Stroke) */
+.scm-text {
+  font-size: 1.5em; /* Reduced size */
+  font-weight: 700;
+  text-transform: uppercase;
+  position: relative;
   color: transparent;
-  -webkit-text-stroke: 2px #03a9f4;
-  margin-left: 20px;
+  -webkit-text-stroke: 1.8px #03a9f4; /* Stroke effect */
+  z-index: 2;
 }
 
-.content span:nth-child(2) {
-  color: #2c034a;
-  animation: animate 4s ease-in-out infinite;
+/* 🔹 SCM Text Overlay - More Visible & Attractive */
+.scm-text.overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #03a9f4;
+  text-shadow: 
+    2px 2px 10px rgba(3, 169, 244, 0.8),
+    -2px -2px 10px rgba(255, 0, 150, 0.8),
+    0px 0px 15px rgba(255, 255, 255, 0.7);
+  animation: animateOverlay 3.5s ease-in-out infinite;
+  z-index: 1;
+  opacity: 0.9;
 }
 
-@keyframes animate {
-  0%,
-  100% {
+/* 🔹 Improved Overlay Animation */
+@keyframes animateOverlay {
+  0%, 100% {
     clip-path: polygon(
-      0% 45%,
-      16% 44%,
-      33% 50%,
-      54% 60%,
-      70% 61%,
-      84% 59%,
-      100% 52%,
-      100% 100%,
-      0% 100%
+      0% 40%, 18% 38%, 36% 45%, 56% 50%, 72% 51%, 
+      86% 48%, 100% 42%, 100% 100%, 0% 100%
     );
   }
-
   50% {
     clip-path: polygon(
-      0% 60%,
-      15% 65%,
-      34% 66%,
-      51% 62%,
-      67% 50%,
-      84% 45%,
-      100% 46%,
-      100% 100%,
-      0% 100%
+      0% 55%, 16% 60%, 35% 58%, 52% 54%, 68% 47%, 
+      83% 43%, 100% 44%, 100% 100%, 0% 100%
     );
+  }
+}
+
+/* 🔹 Smooth Slide-In Effect */
+@keyframes slideIn {
+  from {
+    transform: translateX(-15px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* 🔹 Fade-In Navbar */
+@keyframes fadeInNavbar {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🔹 Responsive Design */
+@media (max-width: 768px) {
+  nav {
+    padding: 2px 0; /* Further reduced */
+  }
+  .logo {
+    height: 30px;
+    width: 30px;
+  }
+  .scm-text,
+  .scm-text.overlay {
+    font-size: 1.3em; /* Smaller text */
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    padding: 1.5px 0;
+  }
+  a {
+    gap: 5px;
+  }
+  .logo {
+    height: 28px;
+    width: 28px;
+  }
+  .scm-text,
+  .scm-text.overlay {
+    font-size: 1.1em;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+// Theme Dark / Light 
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: scale(0.6); } /* More dynamic */
+  50% { opacity: 0.5; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+  100% { opacity: 0; transform: scale(0.6); }
+}
+
+/* Improved Animated Border Effect */
+@keyframes borderGlow {
+  0% { border-color: rgba(255, 200, 0, 1); box-shadow: 0 0 6px rgba(255, 200, 0, 0.8); }
+  25% { border-color: rgba(0, 191, 255, 1); box-shadow: 0 0 6px rgba(0, 191, 255, 0.8); }
+  50% { border-color: rgba(255, 0, 255, 1); box-shadow: 0 0 6px rgba(255, 0, 255, 0.8); }
+  75% { border-color: rgba(255, 69, 0, 1); box-shadow: 0 0 6px rgba(255, 69, 0, 0.8); }
+  100% { border-color: rgba(255, 200, 0, 1); box-shadow: 0 0 6px rgba(255, 200, 0, 0.8); }
+}
+
+.animate-border-theme {
+  animation: borderGlow 3s infinite alternate; /* Smoother glow */
+  border-width: 2px;
+  border-style: solid;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Light & Dark Theme Colors */
+html.light #theme_change_button {
+  border-color: rgba(255, 165, 0, 1);
+  box-shadow: 0 0 8px rgba(255, 165, 0, 0.8);
+}
+
+html.dark #theme_change_button {
+  border-color: rgba(0, 191, 255, 1);
+  box-shadow: 0 0 8px rgba(0, 191, 255, 0.8);
+}
+
+/* Smooth Icon Transition */
+#sun-icon, #moon-icon {
+  transition: opacity 0.4s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.dark #sun-icon {
+  opacity: 0;
+  transform: scale(0.7);
+}
+
+.dark #moon-icon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ✨ Better Button Design */
+#theme_change_button {
+  width: 28px;   /* Compact size */
+  height: 28px;  
+  border-width: 2px;
+  font-size: 12px; /* Icon size reduced */
+  border-radius: 50%; /* Ensure circular shape */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+/* 🔹 Hover Effect - Feels More Interactive */
+#theme_change_button:hover {
+  transform: scale(1.1); /* Slightly expand */
+  box-shadow: 0 0 12px rgba(255, 165, 0, 0.9);
+}
+
+/* 🔥 Active Click Effect */
+#theme_change_button:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 6px rgba(255, 165, 0, 0.8);
+}
+
+/* 🎯 Improved Icon Position */
+#sun-icon, #moon-icon {
+  font-size: 14px; /* Increased for better visibility */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Default Button (Non-Logged-in) */
+.animated-border-button {
+  position: relative;
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  overflow: hidden;
+  transition: background-color 0.3s ease-in-out;
+  z-index: 1;
+}
+
+/* ✅ Default Light Theme */
+html.light .animated-border-button {
+  background-color: #e5e7eb !important; /* Light Gray */
+  color: #000;
+}
+
+
+
+/* ✅ Default Dark Theme */
+html.dark .animated-border-button {
+  background-color: #374151 !important; /* Dark Gray */
+  color: #fff;
+}
+
+/* ✅ Dark Theme - When User is Logged In → Change to #bd9ff5 */
+html.dark .logged-in-bg {
+  background-color: #f2ace9 !important; /* Light Purple */
+  color: #000;
+}
+
+/* Animated Border */
+.animated-border-button::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  border-radius: 10px;
+  background: linear-gradient(45deg, #de492f, #ff0000, #ff9900, #00ff00, #0000ff, #de492f);
+  background-size: 400%;
+  z-index: -1;
+  animation: borderGlow 2s linear infinite;
+}
+
+/* Moving & Glowing Border */
+@keyframes borderGlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Inner Overlay to Keep Text Visible */
+.animated-border-button::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background: inherit; /* ✅ Auto matches parent */
+  border-radius: 6px;
+  z-index: 1;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 640px) {
+  .animated-border-button {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
+
+
+
+.animated-border-button i, 
+.animated-border-button span {
+    position: relative;
+    z-index: 2;
+}
+
+
+
+
+
+
+
+@keyframes borderMoveOneDirection {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.light-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #1f2937;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  overflow: hidden;
+  transition: background-color 0.3s ease-in-out;
+  z-index: 1;
+}
+
+/* Light Button: One Direction Animated Border */
+.light-button::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  border-radius: 10px;
+  background: linear-gradient(90deg, #de492f, #ff9900, #007bff, #00ff00); /* Added Blue (#007bff) */
+  background-size: 300%;
+  z-index: -1;
+  animation: borderMoveOneDirection 2s linear infinite;
+}
+
+/* Prevent border from covering text */
+.light-button::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background: #1f2937;
+  border-radius: 6px;
+  z-index: 1;
+}
+
+/* Keep Icon and Text Visible */
+.light-button i, 
+.light-button span {
+  position: relative;
+  z-index: 2;
+}
+
+
+
+
+
+
+
+
+
+@keyframes wave {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.wave-text span {
+  display: inline-block;
+  font-weight: bold;  /* 👈 Makes text bold */
+  font-size: 24px;    /* 👈 Adjust size if needed */
+  animation: wave 1s infinite ease-in-out;
+}
+
+.wave-text span:nth-child(1) { animation-delay: 0s; }
+.wave-text span:nth-child(2) { animation-delay: 0.1s; }
+.wave-text span:nth-child(3) { animation-delay: 0.2s; }
+.wave-text span:nth-child(4) { animation-delay: 0.3s; }
+.wave-text span:nth-child(5) { animation-delay: 0.4s; }
+.wave-text span:nth-child(6) { animation-delay: 0.5s; }
+
+
+
+
+
+
+/* Responsive Navbar - Default styles */
+.animated-menu {
+  display: flex;
+  flex-wrap: wrap; /* Ensure wrapping on smaller screens */
+  justify-content: center; /* Center items */
+  gap: 10px; /* Adjust spacing between menu items */
+  padding: 0;
+}
+
+/* Menu Item Styles */
+.animated-menu li {
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: fadeIn 0.5s ease-in-out forwards;
+  list-style: none;
+  padding: 3px 5px; /* Reduce padding for smaller screens */
+}
+
+.animated-menu li:nth-child(1) { animation-delay: 0.2s; }
+.animated-menu li:nth-child(2) { animation-delay: 0.4s; }
+.animated-menu li:nth-child(3) { animation-delay: 0.6s; }
+.animated-menu li:nth-child(4) { animation-delay: 0.8s; }
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Underline Hover Effect */
+.animated-menu li::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #007bff;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-50%);
+}
+
+.animated-menu li:hover::before {
+  width: 100%;
+}
+
+/* Glowing Effect */
+.animated-menu li a {
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+  padding: 5px 10px;
+  transition: color 0.3s, text-shadow 0.3s, letter-spacing 0.3s;
+}
+
+.animated-menu li a:hover {
+  color: #007bff;
+  text-shadow: 0 0 5px #007bff, 0 0 10px #007bff;
+  letter-spacing: 1px;
+}
+
+/* 📱 Responsive Adjustments */
+@media (max-width: 768px) {
+  .animated-menu {
+      flex-direction: column; /* Stack items vertically */
+      gap: 5px; /* Reduce spacing for smaller screens */
+  }
+
+  .animated-menu li {
+      padding: 5px 0; /* Adjust padding */
+  }
+
+  .animated-menu li a {
+      font-size: 12px; /* Reduce text size */
+      padding: 5px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .animated-menu {
+      gap: 3px; /* Even smaller spacing for tiny screens */
+  }
+
+  .animated-menu li a {
+      font-size: 11px; /* Further reduce text size */
+      padding: 4px 6px;
   }
 }
 
