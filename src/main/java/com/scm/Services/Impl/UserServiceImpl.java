@@ -12,12 +12,18 @@ import org.springframework.stereotype.Service;
 
 import com.scm.Entitity.User;
 import com.scm.Helper.AppConstants;
+import com.scm.Helper.Helper;
 import com.scm.Helper.ResourceNotFoundException;
+import com.scm.Repository.ContactRepo;
 import com.scm.Repository.UserRepo;
+import com.scm.Services.EmailService;
 import com.scm.Services.UserService;
 
 
+import lombok.extern.slf4j.Slf4j;
 
+
+@Slf4j
 @Service
 public class UserServiceImpl implements UserService{
 
@@ -25,6 +31,13 @@ public class UserServiceImpl implements UserService{
   private UserRepo userRepo;
   @Autowired
   private PasswordEncoder passwordEncoder;
+
+  @Autowired
+  private EmailService emailService;
+
+
+  @Autowired
+  private ContactRepo contactRepo;
 
 
 
@@ -46,8 +59,31 @@ public class UserServiceImpl implements UserService{
 
 
    logger.info(user.getProvider().toString());
-        return userRepo.save(user);
+       
+
+        // send email verification link
+
+        String emailToken = UUID.randomUUID().toString();
+         user.setEmailToken(emailToken);
+         User saveUser =  userRepo.save(user);
+        String emailLink = Helper.getLinkForEmailVerification(emailToken);
+        logger.info("Email Link : "+emailLink);
+        emailService.sendEmail(
+          saveUser.getEmail(), 
+          "✅ Verify Your Email", 
+          "Hi,\n\n" +
+          "Click the link below to verify your email and activate your account:\n\n" +
+          emailLink + "\n\n" +
+          "🔒 Stay secure!\n\n" +
+          "Best,\nYour SCMS Team"
+      );
+      
+
+        return saveUser;
     }
+
+
+
 
     @Override
     public Optional<User> getUserById(String id) {
@@ -115,7 +151,47 @@ newUser.setProviderUserId(user.getProviderUserId());
     }
 
 
+
+
+    @Override
+    public User getByEmailToken(String token) {
+      return userRepo.findByEmailToken(token).orElse(null);
+    }
+
+
+
+
+    @Override
+    public boolean verifyEmailToken(String token) {
+     
+
+      log.info("Verifying email token: {}", token);
+
+        User user = getByEmailToken(token);
+        if (user == null) {
+            log.error("Invalid email token: {}", token);
+            return false;
+        }
+
+        if (user.isEmailVerified()) {
+            log.warn("User email already verified: {}", user.getEmail());
+            return false;
+        }
+
+        user.setEmailVerified(true);
+        user.setEnabled(true);
+        userRepo.save(user);
+        log.info("User email verification successful for: {}", user.getEmail());
+        return true;
+    }
+
+
+
+
     
 
+
+ 
+    
 
 }

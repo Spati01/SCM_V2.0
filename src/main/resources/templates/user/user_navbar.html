@@ -1,5 +1,5 @@
 <!-- LoggedInUser Navbar -->
-<nav data-th-fragment="user_navbar" class="bg-white border-gray-200 dark:bg-gray-900 shadow-sm sm:pl-64 fixed w-full top-0 left-0 right-0">
+<nav data-th-fragment="user_navbar" class="z-20 bg-white border-gray-200 dark:bg-gray-900 shadow-sm sm:pl-64 fixed w-full top-0 left-0 right-0">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2 relative">
 
     <!-- Sidebar Toggle -->
@@ -30,21 +30,29 @@
 
     <!-- Right-side Controls -->
     <div class="flex items-center gap-4 md:order-2">
-      <!-- Theme Toggle -->
       <button id="theme_change_button" 
-      class="relative flex items-center justify-center w-14 h-14 rounded-full 
-             bg-gray-200 dark:bg-gray-800 transition-all duration-300 shadow-md 
-             border-4 border-transparent animate-border-theme ">
-    
-      <!-- Sun Icon (Visible in light mode) -->
-      <i id="sun-icon" class="fa-solid fa-sun text-yellow-500 text-2xl absolute transition-opacity duration-500 opacity-100 dark:opacity-0"></i>
+    class="relative rounded-full 
+           bg-gray-200 dark:bg-gray-800 transition-all duration-300 
+           shadow-lg border-[6px] border-transparent animate-border-theme">
   
-      <!-- Moon Icon (Visible in dark mode) -->
-      <i id="moon-icon" class="fa-solid fa-moon text-blue-400 text-2xl absolute transition-opacity duration-500 opacity-0 dark:opacity-100"></i>
-  
+    <div class="flex items-center justify-center w-full h-full relative">
+      <!-- Sun Icon -->
+      <i id="sun-icon" 
+         class="fa-solid fa-sun-plant-wilt text-yellow-500 
+                transition-opacity duration-500 opacity-100 dark:opacity-0">
+      </i>
+
+      <!-- Moon Icon -->
+      <i id="moon-icon" 
+         class="fa-solid fa-cloud-moon text-blue-400 
+                transition-opacity duration-500 opacity-0 dark:opacity-100 absolute">
+      </i>
+    </div>
   </button>
   
-  
+    
+    
+    
 
       <!-- Desktop User/Logout -->
       <div class="hidden md:flex gap-2">
@@ -53,9 +61,9 @@
            th:classappend="${LoggedInUser} ? 'logged-in-bg' : ''">
             <span data-th-text="${LoggedInUser.name}"></span> 
         </a>
-        <a data-th-href="@{/do-logout}"  
-           class="animated-border-button flex items-center justify-center min-w-[100px] px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-           <span>Logout</span> 
+        <a data-th-href="@{/user/profile}" class="w-10 h-10 rounded-full overflow-hidden border-2 border-gray-300 dark:border-gray-600 hover:shadow-md transition-all">
+          <img data-th-src="@{${LoggedInUser.profilePic}}" alt="User Profile" class="w-full h-full object-cover">
+
         </a>
       </div>
 
@@ -72,6 +80,13 @@
     <!-- Mobile Menu (Includes User/Logout) -->
     <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
       <ul class="animated-menu flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        <li class="md:hidden">
+          <a data-th-href="@{/user/profile}" class="w-8 h-8 rounded-full overflow-hidden border-2 border-gray-300 dark:border-gray-600 hover:shadow-md transition-all">
+            <img data-th-src="${LoggedInUser.profilePic != null ? LoggedInUser.profilePic : '/images/default-user.png'}" 
+                 alt="User Profile" class="w-full h-full object-cover">
+          </a>
+        </li>
+      
         <li><a data-th-href="@{'/home'}" class="block py-2 px-3 md:p-0 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 rounded">HOME</a></li>
         <li><a data-th-href="@{'/about'}" class="block py-2 px-3 md:p-0 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 rounded">ABOUT</a></li>
         <li><a data-th-href="@{'/services'}" class="block py-2 px-3 md:p-0 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 rounded">SERVICES</a></li>
@@ -81,9 +96,7 @@
         <li class="md:hidden">
           <a data-th-href="@{/user/profile}" class="block py-2 px-3 md:p-0 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 rounded">PROFILE</a>
         </li>
-        <li class="md:hidden">
-          <a data-th-href="@{/do-logout}" class="block py-2 px-3 md:p-0 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 rounded">LOGOUT</a>
-        </li>
+        
       </ul>
     </div>
   </div>

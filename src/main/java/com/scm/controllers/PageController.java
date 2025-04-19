@@ -42,6 +42,7 @@ public String homeOpen() {
         model.addAttribute("study", "Computer Science");
         
         System.out.println("Home page Handeler");
+
         return "home";
     }
 
@@ -128,7 +129,11 @@ user.setEmail(userForm.getEmail());
 user.setPassword(userForm.getPassword());
 user.setPhoneNumber(userForm.getPhoneNumber());
 user.setAbout(userForm.getAbout());
-user.setProfilePic("user.png");
+user.setEnabled(false);
+user.setProfilePic("/images/user.png"); 
+
+
+
 
 
 User saveUser = uService.saveUser(user);

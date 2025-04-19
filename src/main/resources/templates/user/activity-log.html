@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Activity Log</title>
+</head>
+<body>
+    <h1>Full Activity Log</h1>
+
+    <div th:if="${allActivities != null and !allActivities.isEmpty()}">
+        <ul>
+            <li th:each="activity : ${allActivities}">
+                <span th:text="${activity.operation}">Operation</span> -
+                <span th:text="${#temporals.format(activity.timestamp, 'dd MMM yyyy HH:mm')}">Time</span>
+            </li>
+        </ul>
+    </div>
+
+    <div th:unless="${allActivities != null and !allActivities.isEmpty()}">
+        <p>No activity found.</p>
+    </div>
+</body>
+</html>

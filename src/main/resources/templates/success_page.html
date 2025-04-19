@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success Page</title>
+</head>
+<body>
+    <div id="content">
+
+        <div id="success-message" class="flex flex-col items-center justify-center min-h-screen text-center px-4 bg-gradient-to-br from-green-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
+            
+            <!-- Animated Success Container -->
+            <div class="max-w-2xl w-full space-y-8 p-8 bg-white dark:bg-gray-800 rounded-3xl shadow-2xl hover:shadow-xl transition-shadow duration-300 border-glow">
+                
+                <!-- Animated Success Logo -->
+                <div class="relative inline-block animate-logo">
+                    <img src="https://cdn-icons-png.flaticon.com/512/845/845646.png" alt="Success Icon" class="w-20 h-20 mx-auto">
+                </div>
+
+                <!-- Centered Animated Typing Success Text -->
+                <div class="relative text-2xl font-bold text-green-600 dark:text-green-400 mt-4 font-mono">
+                     <span class="animate-type">✅ Success! Operation Completed Successfully 🎉</span>
+                </div>
+
+                <div data-th-replace="message::messagebox"></div> 
+
+                <!-- Success Content -->
+                <div class="space-y-4">
+                  
+                    <!-- Progress Bar Animation -->
+                    <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-6">
+                        <div class="animate-progress bg-gradient-to-r from-green-500 to-blue-500 h-2.5 rounded-full"></div>
+                    </div>
+
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">
+                        Redirecting to your dashboard...
+                    </p>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+                    
+                    <!-- Go to Dashboard Button -->
+                    <a data-th-href="@{/login}"
+                       class="relative overflow-hidden group px-8 py-4 bg-gradient-to-br from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 
+                              text-white font-semibold rounded-xl transition-all duration-300 transform active:scale-[0.98] 
+                              shadow-lg hover:shadow-xl flex items-center justify-center gap-2 ring-2 ring-transparent 
+                              hover:ring-green-200/50 focus:outline-none focus:ring-4 focus:ring-green-300/30">
+                        
+                        <!-- Animated Dashboard Icon -->
+                        <span class="group-hover:translate-x-1 transition-transform duration-300">🏠</span>
+                        
+                        <span class="relative text-gray-800 dark:text-white text-shadow-md">
+                            Go to Login
+                        </span>
+
+                        <!-- Shine Effect -->
+                        <div class="absolute inset-0 -left-full group-hover:left-full transition-all duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+                    </a>
+
+                    <!-- Logout Button -->
+                    <a href="/logout" 
+                       class="relative overflow-hidden group px-8 py-4 bg-white hover:bg-gray-100 border-2 border-gray-200 text-gray-700 
+                              dark:bg-gray-800 dark:hover:bg-gray-700 dark:border-gray-600 dark:text-gray-100 font-semibold rounded-xl 
+                              transition-all duration-300 transform active:scale-[0.98] shadow-lg hover:shadow-xl flex items-center justify-center gap-2
+                              hover:border-transparent focus:outline-none focus:ring-4 focus:ring-gray-300/30">
+                        
+                        🚪 Logout
+
+                        <!-- Animated Border Bottom -->
+                        <div class="absolute bottom-0 left-0 w-0 group-hover:w-full h-[2px] bg-gradient-to-r from-green-500 to-blue-500 transition-all duration-300"></div>
+
+                        <!-- Hover Background Effect -->
+                        <div class="absolute inset-0 -inset-y-full group-hover:inset-y-0 bg-gradient-to-b from-transparent via-green-50/20 to-transparent dark:via-green-900/10 transition-all duration-300"></div>
+                    </a>
+                </div>
+
+                <!-- Additional Help -->
+                <p class="text-sm text-gray-500 dark:text-gray-400 mt-8">
+                    Status: Operation Successful 🎯
+                </p>
+            </div>
+        </div>
+    </div>
+   
+    <script>
+        console.log("Success Page")
+    </script>
+</body>
+</html>

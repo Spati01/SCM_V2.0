@@ -1,5 +1,7 @@
 package com.scm.Repository;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -36,17 +38,26 @@ public interface ContactRepo extends  JpaRepository<Contact, String>{
 
 
 
+    long countByUserEmail(String email);
+
+    long countByUserEmailAndFavoriteTrue(String email);
+  
+    long countByUserEmailAndFavoriteFalse(String email);
+    
+    @Query("SELECT c FROM Contact c WHERE c.user.email = :email AND c.createdAt BETWEEN :start AND :end")
+    List<Contact> findContactsByUserEmailAndCreatedAtBetween(@Param("email") String email, 
+                                                              @Param("start") LocalDateTime start, 
+                                                              @Param("end") LocalDateTime end);
+    
+
+    // Order contacts by createdAt in descending order by user email
+    @Query("SELECT c FROM Contact c WHERE c.user.email = :email ORDER BY c.createdAt DESC")
+    List<Contact> findByUserEmailOrderByCreatedAtDesc(@Param("email") String email);
 
 
 
-   
-   
-
-
-
-
-
-
+@Query("SELECT COUNT(c) FROM Contact c WHERE c.user.id = :userId AND DATE(c.createdAt) = :date")
+int countByUserAndDate(@Param("userId") String userId, @Param("date") LocalDate date);
 
 
 }

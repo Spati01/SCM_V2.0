@@ -33,20 +33,25 @@
   <!--End of the logo-->
   <div class="flex gap-4 md:order-2 space-x-1 md:space-x-0 rtl:space-x-reverse">
     <!--Dark Light traggle-->
-      <!-- Theme Toggle -->
-      <button id="theme_change_button" 
-      class="relative mt-1 flex items-center justify-center w-14 h-14 rounded-full 
-             bg-gray-200 dark:bg-gray-800 transition-all duration-300 shadow-md 
-             border-4 border-transparent animate-border-theme ">
-    
-      <!-- Sun Icon (Visible in light mode) -->
-      <i id="sun-icon" class="fa-solid fa-sun text-yellow-500 text-2xl absolute transition-opacity duration-500 opacity-100 dark:opacity-0"></i>
+    <button id="theme_change_button" 
+    class="relative rounded-full 
+           bg-gray-200 dark:bg-gray-800 transition-all duration-300 
+           shadow-lg border-[6px] border-transparent animate-border-theme">
   
-      <!-- Moon Icon (Visible in dark mode) -->
-      <i id="moon-icon" class="fa-solid fa-moon text-blue-400 text-2xl absolute transition-opacity duration-500 opacity-0 dark:opacity-100"></i>
-  
+    <div class="flex items-center justify-center w-full h-full relative">
+      <!-- Sun Icon -->
+      <i id="sun-icon" 
+         class="fa-solid fa-sun-plant-wilt text-yellow-500 
+                transition-opacity duration-500 opacity-100 dark:opacity-0">
+      </i>
+
+      <!-- Moon Icon -->
+      <i id="moon-icon" 
+         class="fa-solid fa-cloud-moon text-blue-400 
+                transition-opacity duration-500 opacity-0 dark:opacity-100 absolute">
+      </i>
+    </div>
   </button>
-  
    
     
     <a data-th-href="@{/login}" class="animated-border-button">

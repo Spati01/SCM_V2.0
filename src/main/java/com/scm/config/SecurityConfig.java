@@ -45,6 +45,13 @@ public class SecurityConfig {
     @Autowired
   private SecurityCustomUserDetailsService userDetailsService;
 
+  @Autowired
+  private AuthFailureHandler authFailureHandler;
+
+
+  @Autowired
+  private CustomFormLoginSuccessHandler customFormLoginSuccessHandler;
+
 //Configuration
 @Bean
 public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
@@ -62,7 +69,9 @@ authorize.anyRequest().permitAll();
  
   formLogin.loginPage("/login");
   formLogin.loginProcessingUrl("/authenticate");
-  formLogin.successForwardUrl("/user/profile");
+  //formLogin.successForwardUrl("/user/profile");
+  formLogin.successHandler(customFormLoginSuccessHandler);
+
   //formLogin.failureForwardUrl("/login?error=true");
   formLogin.usernameParameter("email");
   formLogin.passwordParameter("password");
@@ -91,6 +100,7 @@ formLogin.successHandler(new AuthenticationSuccessHandler() {
 
  */
 
+ formLogin.failureHandler(authFailureHandler);
 
 
   });

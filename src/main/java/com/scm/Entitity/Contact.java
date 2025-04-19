@@ -1,9 +1,10 @@
 package com.scm.Entitity;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -12,6 +13,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,12 +39,17 @@ private String picture;
 private String description;
 private boolean favorite = false;
 private String websiteLink;
-private String LinkedinLink;
+private String linkedInLink;
 private String cloudinaryImagePublicId;
 
-  
+
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+   
 
 @ManyToOne
+@JsonIgnore
 private User user;
 
 @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL , fetch = FetchType.EAGER,orphanRemoval = true)
@@ -50,8 +57,14 @@ private List<SocialLink> links = new ArrayList<>();
 
 
 
+@PrePersist
+public void prePersist() {
+    if (createdAt == null) {
+        createdAt = LocalDateTime.now(); // Automatically set current time
+    }
 
 
+}
 
 
 }

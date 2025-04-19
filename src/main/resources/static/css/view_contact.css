@@ -277,6 +277,104 @@
 
 
 
+ 
+/* Glowing border effect without zoom */
+
+@keyframes image-glow {
+    0% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+    50% { box-shadow: 0 0 15px rgba(255, 215, 0, 1); }
+    100% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+}
+
+.glowing-image {
+    border-radius: 50%;
+    border: 4px solid transparent;
+    animation: image-glow 2s infinite alternate;
+}
+
+/* Modal Glowing Border Animation */
+@keyframes glowing-border {
+    0% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); border-color: rgba(59, 130, 246, 0.5); }
+    50% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.8); border-color: rgba(59, 130, 246, 0.8); }
+    100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); border-color: rgba(59, 130, 246, 0.5); }
+}
+
+/* Modal container */
+.modal-content {
+    border: 2px solid transparent;
+    width: 95%;
+    max-width: 500px;
+    max-height: 90vh;
+    transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+/* Apply glowing effect to modal when visible */
+.fixed.inset-0.flex .modal-content {
+    animation: glowing-border 1.5s infinite alternate;
+}
+
+
+
+/* Responsive modal */
+@media (min-width: 768px) {
+    .modal-content { max-width: 600px; }
+}
+@media (min-width: 1024px) {
+    .modal-content { max-width: 700px; }
+}
+
+
+.swal-popup {
+    border-radius: 10px;
+    background: linear-gradient(135deg, #2a2a72, #009ffd);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+
+  .swal-confirm-button {
+    border-radius: 8px !important;
+    padding: 10px 18px !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+  }
+  
+  .swal-cancel-button {
+    border-radius: 8px !important;
+    padding: 10px 18px !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+  }
+  
+
+
+
+
+
+
+
+
+
+  @keyframes borderGlow {
+    0% { border-color: #ff7e5f; } /* Orange */
+    50% { border-color: #feb47b; } /* Soft Yellow */
+    100% { border-color: #ff7e5f; } /* Orange */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,6 +1,12 @@
 package com.scm.config;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -9,7 +15,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
-import org.springframework.security.oauth2.core.OAuth2AccessToken;
 import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -23,6 +28,17 @@ import com.scm.Repository.UserRepo;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
+
+
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 @Component
 public class OAuthAuthenicationSuccessHandler implements AuthenticationSuccessHandler{
@@ -55,8 +71,9 @@ public class OAuthAuthenicationSuccessHandler implements AuthenticationSuccessHa
        user.setRollList(List.of(AppConstants.ROLE_USER));
        user.setEmailVerified(true);
          user.setEnabled(true);
-         user.setPassword("dummy");
+         user.setPassword("Root");
             user.setAbout("This account created by "+oauthId);
+             user.setLastLogin(LocalDateTime.now());
          
 
         if(oauthId.equalsIgnoreCase("google")) {
@@ -67,7 +84,7 @@ public class OAuthAuthenicationSuccessHandler implements AuthenticationSuccessHa
             user.setProviderUserId(oauthUser.getName());
             user.setProvider(Providers.GOOGLE);
 
-
+     
 
 
 
@@ -89,6 +106,7 @@ public class OAuthAuthenicationSuccessHandler implements AuthenticationSuccessHa
            user.setProfilePic(picture);
            user.setProviderUserId(providerId);
            user.setProvider(Providers.GITHUB);
+           
 
 
 
@@ -151,11 +169,27 @@ public class OAuthAuthenicationSuccessHandler implements AuthenticationSuccessHa
            repo.save(user);
            logger.info("User created successfully : " + user.toString());
        }else{
+        user_data.setLastLogin(LocalDateTime.now());
+        repo.save(user_data); // Save updated login time
            logger.info("User already exist" + user_data.toString());
        }
 
           new DefaultRedirectStrategy().sendRedirect(request, response, "/user/profile");
 
     }
+
+
+
+
+    private void downloadAndSaveGoogleProfilePic(String imageUrl, String fileName) {
+        try (InputStream in = new URL(imageUrl).openStream()) {
+            Path path = Paths.get("src/main/resources/static/images/users/" + fileName + ".jpg");
+            Files.createDirectories(path.getParent()); // Ensure the folder exists
+            Files.copy(in, path, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

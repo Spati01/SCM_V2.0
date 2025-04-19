@@ -61,9 +61,13 @@
                           <input type="file"  
                                  id="image_file_input"  
                                  class="hidden"  
-                                 name="contactImage"  
+                                  
+                                 data-th-field="*{contactImage}"
                                  accept="image/*">  
                         </div>  
+
+
+                        
                       
                         <!-- Image Preview Container with Animated Glow -->  
                         <div class="relative flex items-center justify-center hidden mt-4 animate-float" id="image_container">  
@@ -168,7 +172,7 @@
                                      </div>
                                 </div>
 
-                                  <!--  Website Link   -->
+                                  <!--  LinkedIn Link   -->
 
                                 <div class="w-full" >
                                     <div class="mb-3">
@@ -177,7 +181,8 @@
                                       <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
                                         <i class="fa-brands fa-linkedin-in"></i>
                                       </div>
-                                      <input type="text" data-th-field="*{linkedIn}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="https://www.linkedin.com/in/">
+                                      <input type="text"
+                                      data-th-field="*{linkedInLink}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="https://www.linkedin.com/in/">
                                     </div>
                                      </div>
                                 </div>

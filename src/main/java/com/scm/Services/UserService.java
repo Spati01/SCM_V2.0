@@ -17,4 +17,8 @@ public interface UserService {
 
    User getUserByEmail(String email);
 
+   // Find By user token
+   User getByEmailToken(String token);
+   public boolean verifyEmailToken(String token);
+  
 }

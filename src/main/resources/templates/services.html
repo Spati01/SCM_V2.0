@@ -1,19 +1,160 @@
 <!DOCTYPE html>
-<html lang="en" th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+<html lang="en" th:replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services</title>
+    <title>Services - Smart Contact Manager</title>
 </head>
+
 <body>
-    <section id="content">
-<h1>This is service page</h1>
+    <section id="content" class="py-10 px-4 bg-gray-50 dark:bg-gray-900 min-h-screen">
+        <div class="max-w-6xl mx-auto">
+            <h1 class="text-4xl font-bold text-center text-gray-800 dark:text-white mb-10">Our Smart Contact Services</h1>
 
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Add Contact -->
+                <div class="group bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 border-t-4 border-green-500">
+                    <div class="text-green-500 text-4xl mb-4 group-hover:scale-110 transition"><i class="fas fa-user-plus"></i></div>
+                    <h2 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Add New Contact</h2>
+                    <p class="text-gray-600 dark:text-gray-300">Easily add new contacts with full details and assign tags or groups.</p>
+                </div>
+
+                <!-- View Contacts -->
+                <div class="group bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 border-t-4 border-blue-500">
+                    <div class="text-blue-500 text-4xl mb-4 group-hover:scale-110 transition"><i class="fas fa-address-book"></i></div>
+                    <h2 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">View Contacts</h2>
+                    <p class="text-gray-600 dark:text-gray-300">Browse, filter, and search contacts in a beautiful dashboard layout.</p>
+                </div>
+
+                <!-- Update Contact -->
+                <div class="group bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 border-t-4 border-yellow-500">
+                    <div class="text-yellow-500 text-4xl mb-4 group-hover:scale-110 transition"><i class="fas fa-user-edit"></i></div>
+                    <h2 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Update Contact</h2>
+                    <p class="text-gray-600 dark:text-gray-300">Edit contact information and sync changes instantly across devices.</p>
+                </div>
+
+                <!-- Delete Contact -->
+                <div class="group bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 border-t-4 border-red-500">
+                    <div class="text-red-500 text-4xl mb-4 group-hover:scale-110 transition"><i class="fas fa-user-times"></i></div>
+                    <h2 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Delete Contact</h2>
+                    <p class="text-gray-600 dark:text-gray-300">Securely delete contacts you no longer need. Soft-delete support included.</p>
+                </div>
+
+                <!-- Favorite Contact -->
+                <div class="group bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 border-t-4 border-pink-500">
+                    <div class="text-pink-500 text-4xl mb-4 group-hover:scale-110 transition"><i class="fas fa-star"></i></div>
+                    <h2 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Mark as Favorite</h2>
+                    <p class="text-gray-600 dark:text-gray-300">Easily favorite important contacts for quick access and organization.</p>
+                </div>
+
+                <!-- Activity Logs -->
+                <div class="group bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 border-t-4 border-purple-500">
+                    <div class="text-purple-500 text-4xl mb-4 group-hover:scale-110 transition"><i class="fas fa-history"></i></div>
+                    <h2 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Activity Logs</h2>
+                    <p class="text-gray-600 dark:text-gray-300">Track all recent actions like add, edit, or delete in the activity log.</p>
+                </div>
+
+            </div>
+        </div>
+
+
+    <!-- Services Grid -->
+    <div class="max-w-6xl mx-auto py-16 px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Service Card 1 -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all">
+                <div class="w-16 h-16 bg-indigo-100 dark:bg-indigo-900 rounded-lg flex items-center justify-center mb-6">
+                    <i class="fas fa-shield-alt text-3xl text-indigo-600 dark:text-indigo-400"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Secure Management</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                    Enterprise-grade security with end-to-end encryption and regular audits
+                </p>
+                <ul class="space-y-2 text-indigo-600 dark:text-indigo-400">
+                    <li class="flex items-center">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        Role-based access
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        Audit logs
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        GDPR compliance
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Service Card 2 -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all">
+                <div class="w-16 h-16 bg-indigo-100 dark:bg-indigo-900 rounded-lg flex items-center justify-center mb-6">
+                    <i class="fas fa-brain text-3xl text-indigo-600 dark:text-indigo-400"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">AI Organization</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                    Smart categorization and automatic tagging powered by machine learning
+                </p>
+                <ul class="space-y-2 text-indigo-600 dark:text-indigo-400">
+                    <li class="flex items-center">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        Auto-tagging
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        Duplicate detection
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        Smart search
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Service Card 3 -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg hover:shadow-xl transition-all">
+                <div class="w-16 h-16 bg-indigo-100 dark:bg-indigo-900 rounded-lg flex items-center justify-center mb-6">
+                    <i class="fas fa-sync-alt text-3xl text-indigo-600 dark:text-indigo-400"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Cross-Platform Sync</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                    Seamless synchronization across all your devices and platforms
+                </p>
+                <ul class="space-y-2 text-indigo-600 dark:text-indigo-400">
+                    <li class="flex items-center">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        Real-time updates
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        Multi-device support
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        API access
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+          <!-- CTA Section -->
+    <div class="max-w-4xl mx-auto py-16 px-4 text-center">
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg border border-indigo-100 dark:border-gray-700">
+            <h2 class="text-3xl font-bold mb-6">Ready to Transform Your Contacts?</h2>
+            <p class="text-gray-600 dark:text-gray-300 mb-8 max-w-xl mx-auto">
+                Join thousands of professionals already managing their contacts smarter
+            </p>
+            <a href="/user/dashboard" 
+               class="inline-block px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold shadow-md transition-all">
+                Start Free Trial
+            </a>
+        </div>
+    </div>
     </section>
-    <script>
-        console.log("Services Page");
-        
-            </script>
 
+    <script>
+        console.log("Smart Contact Services Page Loaded");
+    </script>
 </body>
 </html>

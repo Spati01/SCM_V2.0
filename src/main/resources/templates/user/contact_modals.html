@@ -1,0 +1,71 @@
+
+<div data-th-fragment="contact">
+    <!-- Main modal -->
+    <div id="view_contact_modal" tabindex="-1" aria-hidden="true"
+         class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-lg transition-opacity duration-300">
+      <div class="modal-content relative p-6 bg-white rounded-xl shadow-2xl dark:bg-gray-800 border-2 border-transparent transition-all duration-300">
+        
+        <!-- Modal header -->
+        <div class="flex justify-between items-center border-b pb-4 dark:border-gray-700">
+          <div></div>
+          <div class="flex flex-col items-center space-y-3">
+            <img onerror="this.src='https://static-00.iconduck.com/assets.00/profile-default-icon-2048x2045-u3j7s5nj.png'"
+                 id="contact_image"
+                 class="w-36 h-36 glowing-image"
+                 src="" alt=""/>
+            <h3 id="contact_name"
+                class="text-2xl font-semibold text-gray-900 dark:text-white transition-colors duration-300">
+            </h3>
+            <p class="text-gray-600 dark:text-gray-300 text-sm transition-colors duration-300" id="contact_email"></p>
+            <p class="text-gray-600 dark:text-gray-300 text-sm transition-colors duration-300" id="contact_phone"></p>
+          </div>
+          <button onclick="closeContactModal()"
+                  class="text-gray-500 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 
+                        rounded-full p-2 transition-colors duration-300">
+            <i class="fa-solid fa-xmark text-lg"></i>
+          </button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="p-4">
+          <div class="relative overflow-x-auto">
+            <table class="w-full text-sm text-gray-800 dark:text-gray-200 transition-colors duration-300">
+              <tbody>
+                <tr class="odd:bg-gray-100 even:bg-white dark:odd:bg-gray-700 dark:even:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300">
+                  <th class="px-4 py-3"><i class="fa-solid fa-location-dot text-lg text-blue-600 dark:text-blue-400"></i></th>
+                  <td class="px-4 py-3"><span id="contact_address"></span></td>
+                </tr>
+                <tr class="odd:bg-gray-100 even:bg-white dark:odd:bg-gray-700 dark:even:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300">
+                  <th class="px-4 py-3"><i class="fa-solid fa-user text-lg text-blue-600 dark:text-blue-400"></i></th>
+                  <td class="px-4 py-3"><span id="contact_about"></span></td>
+                </tr>
+                <tr class="odd:bg-gray-100 even:bg-white dark:odd:bg-gray-700 dark:even:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300">
+                  <th class="px-4 py-3"><i class="fa-regular fa-heart text-lg text-red-500"></i></th>
+                  <td class="px-4 py-3"><span id="contact_favorite"></span></td>
+                </tr>
+                <tr class="odd:bg-gray-100 even:bg-white dark:odd:bg-gray-700 dark:even:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300">
+                  <th class="px-4 py-3"><i class="fa-solid fa-earth-americas text-lg text-blue-600 dark:text-blue-400"></i></th>
+                  <td class="px-4 py-3"><a id="contact_website" class="inline-block break-words text-blue-500 hover:underline"></a></td>
+                </tr>
+                <tr class="odd:bg-gray-100 even:bg-white dark:odd:bg-gray-700 dark:even:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300">
+                  <th class="px-4 py-3"><i class="fa-brands fa-linkedin-in text-lg text-blue-600 dark:text-blue-400"></i></th>
+                  <td class="px-4 py-3"><a id="contact_linkedIn" class="inline-block break-words text-blue-500 hover:underline"></a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="flex items-center justify-center p-4 border-t dark:border-gray-700">
+            <button onclick="closeContactModal()"
+                    class="relative px-8 py-3 text-sm font-semibold uppercase tracking-wider rounded-lg bg-gradient-to-r from-blue-500 to-indigo-500 text-white 
+                          shadow-lg shadow-blue-500/30 backdrop-blur-md border border-white/20 
+                          before:absolute before:inset-0 before:rounded-lg before:bg-white/20 before:blur-sm before:opacity-0 
+                          hover:before:opacity-100 hover:scale-105 hover:shadow-xl transition-all duration-300">
+                <span class="relative z-10">Close</span>
+            </button>
+        </div>
+      </div>
+    </div>
+</div>

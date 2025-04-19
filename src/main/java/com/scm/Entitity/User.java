@@ -4,6 +4,7 @@ package com.scm.Entitity;
 
 
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -60,8 +61,14 @@ private String phoneNumber;
 
   //information
 
+
+
+  @Column(name = "last_login")
+  private LocalDateTime lastLogin;
+  
+
   @Getter(value = AccessLevel.NONE)
-  private boolean enabled = true;
+  private boolean enabled = false;
   private boolean emailVerified = false;
   private boolean phoneVerified = false;
 
@@ -78,8 +85,7 @@ private List<Contact> contact = new ArrayList<>();
 @ElementCollection(fetch = FetchType.EAGER)
 private List<String> rollList = new ArrayList<>();
 
-
-
+   private String emailToken;
 
 @Override
 public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -269,6 +269,96 @@ a {
 
 
 
+
+
+
+
+
+
+
+  /* Floating Animation */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Progress Bar Animation */
+@keyframes progress {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+.animate-progress {
+    animation: progress 5s linear infinite;
+}
+
+/* Glowing Border Animation */
+@keyframes glow-border {
+    0% { box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(255, 0, 0, 0.9); }
+    100% { box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); }
+}
+.border-glow {
+    animation: glow-border 2s infinite alternate;
+}
+
+/* Animated Logo */
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+.animate-logo {
+    animation: pulse 2s infinite ease-in-out;
+}
+
+/* Typewriter Effect */
+@keyframes typing {
+  0% { width: 0; }      /* Start typing */
+  50% { width: 100%; }  /* Finish typing */
+  60% { width: 100%; }  /* Hold text for 1s */
+  100% { width: 0; }    /* Erase text */
+}
+
+/* Cursor Blinking */
+@keyframes blinkCursor {
+  50% { border-color: transparent; }
+}
+
+/* Apply Animation */
+.animate-type {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid red; /* Cursor effect */
+  animation: typing 3s steps(10) infinite, blinkCursor 0.7s infinite;
+  width: 0;
+}
+
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Theme Dark / Light 
 
 @keyframes fadeIn {
@@ -325,13 +415,13 @@ html.dark #theme_change_button {
   transform: scale(1);
 }
 
-/* ✨ Better Button Design */
+/* 🧩 Ultra-Compact Theme Toggle */
 #theme_change_button {
-  width: 28px;   /* Compact size */
-  height: 28px;  
+  width: 36px;
+  height: 36px;
   border-width: 2px;
-  font-size: 12px; /* Icon size reduced */
-  border-radius: 50%; /* Ensure circular shape */
+  font-size: 12px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -339,24 +429,34 @@ html.dark #theme_change_button {
   transition: all 0.3s ease-in-out;
 }
 
-/* 🔹 Hover Effect - Feels More Interactive */
+/* ✨ Mini Hover & Click Effects */
 #theme_change_button:hover {
-  transform: scale(1.1); /* Slightly expand */
-  box-shadow: 0 0 12px rgba(255, 165, 0, 0.9);
+  transform: scale(1.05);
+  box-shadow: 0 0 8px rgba(255, 165, 0, 0.9);
 }
 
-/* 🔥 Active Click Effect */
 #theme_change_button:active {
-  transform: scale(0.95);
-  box-shadow: 0 0 6px rgba(255, 165, 0, 0.8);
+  transform: scale(0.9);
+  box-shadow: 0 0 5px rgba(255, 165, 0, 0.6);
 }
 
-/* 🎯 Improved Icon Position */
+/* 🌗 Mini Icon Styling */
 #sun-icon, #moon-icon {
-  font-size: 14px; /* Increased for better visibility */
+  font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: opacity 0.4s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.dark #sun-icon {
+  opacity: 0;
+  transform: scale(0.85);
+}
+
+.dark #moon-icon {
+  opacity: 1;
+  transform: scale(1);
 }
 
 
@@ -404,7 +504,7 @@ html.dark .animated-border-button {
 
 /* ✅ Dark Theme - When User is Logged In → Change to #bd9ff5 */
 html.dark .logged-in-bg {
-  background-color: #f2ace9 !important; /* Light Purple */
+  background-color:   #6B8E23 !important; /* Light Purple */
   color: #000;
 }
 
@@ -654,6 +754,51 @@ html.dark .logged-in-bg {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+Home page */
+
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.feature-card {
+  @apply flex-none w-72 bg-white dark:bg-gray-800 p-5 rounded-xl shadow-md hover:shadow-2xl transition-transform duration-300 hover:-translate-y-1 snap-start;
+}
+
+.card-glass {
+  @apply bg-white/40 dark:bg-gray-800/40 backdrop-blur-md p-6 rounded-2xl shadow-md hover:shadow-xl transition;
+}
+
+.stat-card {
+  @apply bg-white dark:bg-gray-800 px-6 py-4 rounded-xl shadow text-3xl font-bold;
+}
+
+.testimonial-card {
+  @apply bg-gray-100 dark:bg-gray-900 p-4 rounded-xl shadow max-w-sm transition duration-300 ease-in-out transform hover:scale-105;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
 
 
 

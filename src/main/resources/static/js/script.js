@@ -67,3 +67,36 @@ changeTheme();
 
 
 
+  // Reusable counter function
+  function animateCounter(id) {
+    const counterEl = document.getElementById(id);
+    const targetCount = parseInt(counterEl.getAttribute("data-count"), 10);
+
+    if (!isNaN(targetCount)) {
+      let current = 0;
+      const duration = 1000; // animation time in ms
+      const frameRate = 30;
+      const totalSteps = Math.ceil(duration / frameRate);
+      const increment = targetCount / totalSteps;
+
+      const interval = setInterval(() => {
+        current += increment;
+
+        if (current >= targetCount) {
+          current = targetCount;
+          clearInterval(interval);
+        }
+
+        counterEl.textContent = `${Math.floor(current).toLocaleString()}+`;
+      }, frameRate);
+    } else {
+      counterEl.textContent = "Error: Invalid count";
+    }
+  }
+
+  // Initialize all counters on DOM ready
+  document.addEventListener("DOMContentLoaded", () => {
+    animateCounter("contactCounter");
+    animateCounter("favoriteContactCount");
+    animateCounter("unfavoriteContactCount");
+  });
